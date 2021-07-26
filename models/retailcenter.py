@@ -33,5 +33,5 @@ class RetailCenter:
         self.address = address
 
 
-    def get_infor(self):
+    def __str__(self):
         return self.uniqueID + ", " + self.typ + ", " + self.address + "."

@@ -33,5 +33,5 @@ class Shipment:
         self.retailcenterID = retailcenter.uniqueID
 
 
-    def get_infor(self):
+    def __str__(self):
         return self.shippmentID + ", " + self.itemnumID + ", " + self.retailcenterID + "."

@@ -1,6 +1,6 @@
 
 
-class RetailCenter:
+class TransportEvent:
     def __init__(self, schedulenum, typ, deliveryRoute):
         self.schedulenum = schedulenum
         self.typ = typ
@@ -33,5 +33,5 @@ class RetailCenter:
         self.deliveryRoute = deliveryRoute
 
 
-    def get_infor(self):
+    def __str__(self):
         return self.schedulenum + ", " + self.typ + ", " + self.deliveryRoute + "."

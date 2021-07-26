@@ -60,5 +60,5 @@ class ShippedItem:
         self.finaldeldat = finaldeldat
 
 
-    def get_infor(self):
-        return self.itemnum + ", " + self.weight + ", " + self.dims + ", " + self.insur_amount + ", " + str(self.destination) + ", " + str(self.finaldeldate) + "."
+    def __str__(self):
+        return self.itemnum + ", " + str(self.weight) + ", " + str(self.dims) + ", " + str(self.insur_amount) + ", " + str(self.destination) + ", " + str(self.finaldeldate) + "."

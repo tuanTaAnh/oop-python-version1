@@ -1,14 +1,14 @@
 
 
 class Shipment_TransportEvent:
-    def __init__(self, vechile, transevent):
-        self.vechileID = vechile.vechileID
+    def __init__(self, shipment, transevent):
+        self.shippmentID = shipment.shippmentID
         self.schedulenum = transevent.schedulenum
 
 
     # getter method
-    def get_vechileID(self):
-        return self.vechileID
+    def get_shipment(self):
+        return self.shipment
 
     # getter method
     def get_schedulenum(self):
@@ -16,13 +16,13 @@ class Shipment_TransportEvent:
 
 
     # setter method
-    def set_shippmentID(self, vechile):
-        self.vechileID = vechile.vechileID
+    def set_shippmentID(self, shipment):
+        self.shippmentID = shipment.shippmentID
 
     # setter method
     def set_schedulenum(self, transevent):
         self.shippmentID = transevent.schedulenum
 
 
-    def get_infor(self):
-        return self.vechileID + ", " + self.schedulenum + "."
+    def __str__(self):
+        return self.shippmentID + ", " + self.shippmentID + "."

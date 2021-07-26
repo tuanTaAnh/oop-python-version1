@@ -33,5 +33,5 @@ class Vechile:
         self.branch = branch
 
 
-    def get_infor(self):
-        return self.vechileID + ", " + self.color+ ", " + self.branch + "."
+    def __str__(self):
+        return self.vechileID + ", " + self.color + ", " + self.branch + "."
