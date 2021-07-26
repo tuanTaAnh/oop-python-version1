@@ -1,19 +1,28 @@
 
 
 class Vechile:
-    def __init__(self, vechileID, color, branch):
-        self.vechileID = vechileID
-        self.color = color
+    def __init__(self, vechileID, fuel_per_km, branch):
+
+        self.__check_type__(vechileID, fuel_per_km, branch)
+
+        self.__vechileID__ = vechileID
+        self.fuel_per_km = fuel_per_km
         self.branch = branch
+
+
+    def __check_type__(self, vechileID, color, branch):
+        assert type(vechileID) == str, "Wrong format"
+        assert type(color) == str, "Wrong format"
+        assert type(branch) == str, "Wrong format"
 
 
     # getter method
     def get_vechileID(self):
-        return self.vechileID
+        return self.__vechileID__
 
     # getter method
-    def get_color(self):
-        return self.color
+    def get_fuel_per_km(self):
+        return self.fuel_per_km
 
     # getter method
     def get_branch(self):
@@ -22,11 +31,11 @@ class Vechile:
 
     # setter method
     def set_vechileID(self, vechileID):
-        self.vechileID = vechileID
+        self.__vechileID__ = vechileID
 
     # setter method
-    def set_color(self, color):
-        self.color = color
+    def set_fuel_per_km(self, fuel_per_km):
+        self.fuel_per_km = fuel_per_km
 
     # setter method
     def set_branch(self, branch):
@@ -34,4 +43,4 @@ class Vechile:
 
 
     def __str__(self):
-        return self.vechileID + ", " + self.color + ", " + self.branch + "."
+        return self.__vechileID__ + ", " + self.fuel_per_km + ", " + self.branch + "."

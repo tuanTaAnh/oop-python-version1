@@ -1,15 +1,22 @@
 
 
 class Shipment:
-    def __init__(self, shippmentID, shippeditem, retailcenterlist):
-        self.shippmentID = shippmentID
-        self.itemnumID = shippeditem.itemnum
-        self.retailcenterlist = retailcenterlist
+    def __init__(self, shippmentID, shippeditem, retailcenter):
+        self. __check_type__(shippmentID, shippeditem, retailcenter)
+
+        self.__shippmentID__ = shippmentID
+        self.itemnumID = shippeditem.get_itemnum()
+        self.retailcenterID = retailcenter.get_uniqueID()
+
+    def __check_type__(self, shippmentID, shippeditem, retailcenter):
+        assert type(shippmentID) == str, "Wrong format"
+        assert str(type(shippeditem)) == "<class 'models.shippeditem.ShippedItem'>", "Wrong format"
+        assert str(type(retailcenter)) == "<class 'models.retailcenter.RetailCenter'>", "Wrong format"
 
 
     # getter method
     def get_shippmentID(self):
-        return self.shippmentID
+        return self.__shippmentID__
 
     # getter method
     def get_itemnumID(self):
@@ -17,25 +24,21 @@ class Shipment:
 
     # getter method
     def get_retailcenterID(self):
-        return self.retailcenterlist
+        return self.retailcenterID
 
 
     # setter method
     def set_shippmentID(self, shippmentID):
-        self.shippmentID = shippmentID
+        self.__shippmentID__ = shippmentID
 
     # setter method
     def set_itemnumID(self, shippeditem):
         self.itemnumID = shippeditem.itemnum
 
     # setter method
-    def set_retailcenterID(self, retailcenterlist):
-        self.retailcenterlist = retailcenterlist
+    def set_retailcenterID(self, retailcenter):
+        self.retailcenterID = retailcenter.uniqueID
 
 
     def __str__(self):
-        self.retailcenterIDlist  = "list of retailcenterIDs: "
-        for center in self.retailcenterlist:
-            self.retailcenterIDlist += center.uniqueID
-            self.retailcenterIDlist += " "
-        return self.shippmentID + ", " + self.itemnumID + ", " + self.retailcenterIDlist + "."
+        return self.__shippmentID__ + ", " + self.itemnumID + ", " + self.retailcenterID + "."

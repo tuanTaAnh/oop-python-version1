@@ -2,8 +2,16 @@
 
 class Vechile_TransportEvent:
     def __init__(self, vechile, transevent):
-        self.vechileID = vechile.vechileID
-        self.schedulenum = transevent.schedulenum
+
+        self.__check_type__(vechile, transevent)
+
+        self.vechileID = vechile.get_vechileID()
+        self.schedulenum = transevent.get_schedulenum()
+
+
+    def __check_type__(self, vechile, transevent):
+        assert str(type(vechile)) == "<class 'models.vechile.Vechile'>", "Wrong format"
+        assert str(type(transevent)) == "<class 'models.transportenvet.TransportEvent'>", "Wrong format"
 
 
     # getter method

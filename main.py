@@ -1,45 +1,54 @@
-from models.shippeditem import ShippedItem
-from models.retailcenter import RetailCenter
-from models.vechile import Vechile
-from models.transportenvet import TransportEvent
-from models.vechile_transportevent import Vechile_TransportEvent
-from models.shipment_transportevent import Shipment_TransportEvent
-from models.shippment import Shipment
+from controller.shippeditemDAO import ShippedItemDAO
+from controller.vechileDAO import VechileDAO
+from controller.retalcenterDAO import RetailCenterDAO
+from controller.transporteventDAO import TransportEventDAO
+from controller.shipmentDAO import ShipmentDAO
+from controller.vechile_transporteventDAO import Vechile_TransportEventDAO
+from controller.shipment_transporteventDAO import Shipment_TransportEventDAO
+
+
 
 def create_obj():
 
     # itemnum, weight, dims, insur_amount, destination, finaldeldate
-    item = ShippedItem("123", 200, 2, 300, "Ha Noi", "20/5/2021")
-    print(item)
+    itemlist = ShippedItemDAO()
+    itemlist.add_item("123", 200, 2, 300, "Ha Noi", "20/5/2021")
+    itemlist.print_itemlist()
 
     #vechileID, color, branch
-    vec = Vechile("x-123", "red", "Toyota")
-    print(vec)
+    veclist = VechileDAO()
+    veclist.add_vechile("x-123", "2L/100km", "Toyota")
+    veclist.print_veclist()
 
     # uniqueID, typ, address
-    retcenter1 = RetailCenter("b-98", "small", "Ha Noi")
-    print(retcenter1)
+    retcenterlist = RetailCenterDAO()
+    retcenterlist.add_recenter("b-98", "small", "Ha Noi")
+    retcenterlist.print_recenterlist()
+
 
     # schedulenum, typ, deliveryRoute
-    tranevent = TransportEvent("bc-900", "truck", "Hanoi-Haiphong")
-    print(tranevent)
+    traneventlist = TransportEventDAO()
+    traneventlist.add_tran("bc-900", "truck", "Hanoi-Haiphong")
+    traneventlist.print_tranlist()
 
-    # one-to-many relationship, one-to-one relationship
+
     # shippmentID, shippeditem, retailcenter
-    shi = Shipment("b234", item, [retcenter1])
-    print(shi)
+    # one-to-one relationship
+    shilist = ShipmentDAO()
+    shilist.add_shipment("b234", itemlist.get_item_by_id("123"), retcenterlist.get_recenter_by_id("b-98"))
+    # shilist.add_shipment("b123", itemlist.get_item_by_id("123"), retcenterlist.get_recenter_by_id("b-98"))
+    shilist.print_shilist()
+
 
     #many-to-many relationship
-    # vechile, transevent
-    ve_trans = Vechile_TransportEvent(vec, tranevent)
-    print(ve_trans)
+    ve_translist = Vechile_TransportEventDAO()
+    ve_translist.add_vec_trans(veclist.get_vec_by_id("x-123"), traneventlist.get_tran_by_id("bc-900"))
+    ve_translist.print_vec_trans_list()
 
     # many-to-many relationship
-    # shipment, transevent
-    shi_trans = Shipment_TransportEvent(shi, tranevent)
-    print(shi_trans)
-
-
+    shi_translist = Shipment_TransportEventDAO()
+    shi_translist.add_shi_tran(shilist.get_shi_by_id("b234"), traneventlist.get_tran_by_id("bc-900"))
+    shi_translist.print_shi_tranlist()
 
 
 

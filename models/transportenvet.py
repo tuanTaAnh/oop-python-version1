@@ -2,14 +2,23 @@
 
 class TransportEvent:
     def __init__(self, schedulenum, typ, deliveryRoute):
-        self.schedulenum = schedulenum
+
+        self.__check_type__(schedulenum, typ, deliveryRoute)
+
+        self.__schedulenum__ = schedulenum
         self.typ = typ
         self.deliveryRoute = deliveryRoute
 
 
+    def __check_type__(self, schedulenum, typ, deliveryRoute):
+        assert type(schedulenum) == str, "Wrong format"
+        assert type(typ) == str, "Wrong format"
+        assert type(deliveryRoute) == str, "Wrong format"
+
+
     # getter method
     def get_schedulenum(self):
-        return self.schedulenum
+        return self.__schedulenum__
 
     # getter method
     def get_typ(self):
@@ -22,7 +31,7 @@ class TransportEvent:
 
     # setter method
     def set_schedulenum(self, schedulenum):
-        self.schedulenum = schedulenum
+        self.__schedulenum__ = schedulenum
 
     # setter method
     def set_typ(self, typ):
@@ -34,4 +43,4 @@ class TransportEvent:
 
 
     def __str__(self):
-        return self.schedulenum + ", " + self.typ + ", " + self.deliveryRoute + "."
+        return self.__schedulenum__ + ", " + self.typ + ", " + self.deliveryRoute + "."

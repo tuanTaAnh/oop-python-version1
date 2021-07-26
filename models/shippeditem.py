@@ -2,7 +2,10 @@
 
 class ShippedItem:
     def __init__(self, itemnum, weight, dims, insur_amount, destination, finaldeldate):
-        self.itemnum = itemnum
+
+        self.__check_type__(itemnum, weight, dims, insur_amount, destination, finaldeldate)
+
+        self.__itemnum__ = itemnum
         self.weight = weight
         self.dims = dims
         self.insur_amount = insur_amount
@@ -10,9 +13,18 @@ class ShippedItem:
         self.finaldeldate = finaldeldate
 
 
+    def __check_type__(self, itemnum, weight, dims, insur_amount, destination, finaldeldate):
+        assert type(itemnum) == str, "Wrong format"
+        assert type(weight) == int, "Wrong format"
+        assert type(dims) == int, "Wrong format"
+        assert type(insur_amount) == int, "Wrong format"
+        assert type(destination) == str, "Wrong format"
+        assert type(finaldeldate) == str, "Wrong format"
+
+
     # getter method
     def get_itemnum(self):
-        return self.itemnum
+        return self.__itemnum__
 
     # getter method
     def get_weight(self):
@@ -37,7 +49,7 @@ class ShippedItem:
 
     # setter method
     def set_itemnum(self, itemnum):
-        self.itemnum = itemnum
+        self.__itemnum__ = itemnum
 
     # setter method
     def set_weight(self, weight):
@@ -61,4 +73,4 @@ class ShippedItem:
 
 
     def __str__(self):
-        return self.itemnum + ", " + str(self.weight) + ", " + str(self.dims) + ", " + str(self.insur_amount) + ", " + str(self.destination) + ", " + str(self.finaldeldate) + "."
+        return self.__itemnum__ + ", " + str(self.weight) + ", " + str(self.dims) + ", " + str(self.insur_amount) + ", " + str(self.destination) + ", " + str(self.finaldeldate) + "."
