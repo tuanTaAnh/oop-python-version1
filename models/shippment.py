@@ -1,10 +1,10 @@
 
 
 class Shipment:
-    def __init__(self, shippmentID, shippeditem, retailcenter):
+    def __init__(self, shippmentID, shippeditem, retailcenterlist):
         self.shippmentID = shippmentID
         self.itemnumID = shippeditem.itemnum
-        self.retailcenterID = retailcenter.uniqueID
+        self.retailcenterlist = retailcenterlist
 
 
     # getter method
@@ -17,7 +17,7 @@ class Shipment:
 
     # getter method
     def get_retailcenterID(self):
-        return self.retailcenterID
+        return self.retailcenterlist
 
 
     # setter method
@@ -29,9 +29,13 @@ class Shipment:
         self.itemnumID = shippeditem.itemnum
 
     # setter method
-    def set_retailcenterID(self, retailcenter):
-        self.retailcenterID = retailcenter.uniqueID
+    def set_retailcenterID(self, retailcenterlist):
+        self.retailcenterlist = retailcenterlist
 
 
     def __str__(self):
-        return self.shippmentID + ", " + self.itemnumID + ", " + self.retailcenterID + "."
+        self.retailcenterIDlist  = "list of retailcenterIDs: "
+        for center in self.retailcenterlist:
+            self.retailcenterIDlist += center.uniqueID
+            self.retailcenterIDlist += " "
+        return self.shippmentID + ", " + self.itemnumID + ", " + self.retailcenterIDlist + "."

@@ -17,15 +17,16 @@ def create_obj():
     print(vec)
 
     # uniqueID, typ, address
-    retcenter = RetailCenter("b-98", "small", "Ha Noi")
-    print(retcenter)
+    retcenter1 = RetailCenter("b-98", "small", "Ha Noi")
+    print(retcenter1)
 
     # schedulenum, typ, deliveryRoute
     tranevent = TransportEvent("bc-900", "truck", "Hanoi-Haiphong")
     print(tranevent)
 
+    # one-to-many relationship, one-to-one relationship
     # shippmentID, shippeditem, retailcenter
-    shi = Shipment("b234", item, retcenter)
+    shi = Shipment("b234", item, [retcenter1])
     print(shi)
 
     #many-to-many relationship
