@@ -48,6 +48,7 @@ def create_obj():
 
     shilist = ShipmentDAO()
     shilist.add_shipment("b234", item, recenter)
+    #uncomment this line to show one-to-one relationship
     # shilist.add_shipment("b123", item, recenter)
     shilist.print_shilist()
 

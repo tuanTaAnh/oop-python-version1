@@ -36,7 +36,7 @@ class ShipmentDAO:
         return True
 
     def __check_unique_shipped_item__(self, shippeditem):
-        for shi in self.shiList:
-            if shi.get_itemnumID() == shippeditem.get_itemnum():
+        for shi in self.shiList.items():
+            if shi[1].get_itemnumID() == shippeditem.get_itemnum():
                 return False
         return True
