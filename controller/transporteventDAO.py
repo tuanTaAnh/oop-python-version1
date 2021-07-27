@@ -5,7 +5,7 @@ class TransportEventDAO:
        self.tranList =  {}
 
     def add_tran(self, schedulenum, typ, deliveryRoute):
-        assert self.__check_unique_id(schedulenum), "The id is not unique"
+        assert self.__check_unique_id__(schedulenum), "The id is not unique"
 
         tran = TransportEvent(schedulenum, typ, deliveryRoute)
         self.tranList[schedulenum] = tran
@@ -28,7 +28,7 @@ class TransportEventDAO:
         return trandictlist
 
 
-    def __check_unique_id(self, id):
+    def __check_unique_id__(self, id):
         if id in self.tranList.keys():
             return False
         return True

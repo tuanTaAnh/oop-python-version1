@@ -5,7 +5,7 @@ class RetailCenterDAO:
        self.recenterList =  {}
 
     def add_recenter(self, uniqueID, typ, address):
-        assert self.__check_unique_id(uniqueID), "The id is not unique"
+        assert self.__check_unique_id__(uniqueID), "The id is not unique"
 
         recenter = RetailCenter(uniqueID, typ, address)
         self.recenterList[uniqueID] = recenter
@@ -29,7 +29,7 @@ class RetailCenterDAO:
         return recenterdictlist
 
 
-    def __check_unique_id(self, id):
+    def __check_unique_id__(self, id):
         if id in self.recenterList.keys():
             return False
         return True

@@ -5,7 +5,7 @@ class ShippedItemDAO:
        self.itemList =  {}
 
     def add_item(self, itemnum, weight, dims, insur_amount, destination, finaldeldate):
-        assert self.__check_unique_id(itemnum), "The id is not unique"
+        assert self.__check_unique_id__(itemnum), "The id is not unique"
 
         recenter = ShippedItem(itemnum, weight, dims, insur_amount, destination, finaldeldate)
         self.itemList[itemnum] = recenter
@@ -29,7 +29,7 @@ class ShippedItemDAO:
         return itemdictlist
 
 
-    def __check_unique_id(self, id):
+    def __check_unique_id__(self, id):
         if id in self.itemList.keys():
             return False
         return True

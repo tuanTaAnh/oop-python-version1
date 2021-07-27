@@ -13,6 +13,7 @@ def create_obj():
     # itemnum, weight, dims, insur_amount, destination, finaldeldate
     itemlist = ShippedItemDAO()
     itemlist.add_item("123", 200, 2, 300, "Ha Noi", "20/5/2021")
+    itemlist.add_item("144", 224, 3, 500, "TP HCM", "20/3/2021")
     itemlist.print_itemlist()
 
     #vechileID, color, branch

@@ -5,7 +5,7 @@ class VechileDAO:
        self.vecList =  {}
 
     def add_vechile(self, vechileID, fuel_per_km, branch):
-        assert self.__check_unique_id(vechileID), "The id is not unique"
+        assert self.__check_unique_id__(vechileID), "The id is not unique"
 
         vec = Vechile(vechileID, fuel_per_km, branch)
         self.vecList[vechileID] = vec
@@ -28,7 +28,7 @@ class VechileDAO:
         return vecdictlist
 
 
-    def __check_unique_id(self, id):
+    def __check_unique_id__(self, id):
         if id in self.vecList.keys():
             return False
         return True

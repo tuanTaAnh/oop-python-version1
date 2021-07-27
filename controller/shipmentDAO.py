@@ -5,8 +5,8 @@ class ShipmentDAO:
        self.shiList = {}
 
     def add_shipment(self, shippmentID, shippeditem, retailcenter):
-        assert self.__check_unique_id(shippmentID), "The id is not unique"
-        assert self.__check_unique_shipped_item(shippeditem), "The shippeditem and shippment is not satified with one - one relationship"
+        assert self.__check_unique_id__(shippmentID), "The id is not unique"
+        assert self.__check_unique_shipped_item__(shippeditem), "The shippeditem and shippment is not satified with one - one relationship"
 
         shi = Shipment(shippmentID, shippeditem, retailcenter)
         self.shiList[shippmentID] = shi
@@ -30,12 +30,12 @@ class ShipmentDAO:
         return shidictlist
 
 
-    def __check_unique_id(self, id):
+    def __check_unique_id__(self, id):
         if id in self.shiList.keys():
             return False
         return True
 
-    def __check_unique_shipped_item(self, shippeditem):
+    def __check_unique_shipped_item__(self, shippeditem):
         for shi in self.shiList:
             if shi.get_itemnumID() == shippeditem.get_itemnum():
                 return False
