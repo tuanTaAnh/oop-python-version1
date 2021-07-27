@@ -2,39 +2,37 @@ from models.shippment import Shipment
 
 class ShipmentDAO:
     def __init__(self):
-       self.shiList =  []
+       self.shiList = {}
 
     def add_shipment(self, shippmentID, shippeditem, retailcenter):
         assert self.__check_unique_id(shippmentID), "The id is not unique"
         assert self.__check_unique_shipped_item(shippeditem), "The shippeditem and shippment is not satified with one - one relationship"
 
         shi = Shipment(shippmentID, shippeditem, retailcenter)
-        self.shiList.append(shi)
+        self.shiList[shippmentID] = shi
 
 
     def get_shi_by_id(self, id):
-        for shi in self.shiList:
-            if shi.get_shippmentID() == id:
-                return shi
+        if id in self.shiList.keys():
+            return self.shiList[id]
         return None
 
     def print_shilist(self):
         print("LIST OF SHIPMENTS: ")
-        for shi in self.shiList:
-            print(shi)
+        for shi in self.shiList.items():
+            print(shi[1])
         print()
 
     def get_dict_list(self):
         shidictlist = []
-        for shi in self.shiList:
-            shidictlist.append(shi.get_infor_dist())
+        for shi in self.shiList.items():
+            shidictlist.append(shi[1].get_infor_dist())
         return shidictlist
 
 
     def __check_unique_id(self, id):
-        for shi in self.shiList:
-            if shi.shippmentID == id:
-                return False
+        if id in self.shiList.keys():
+            return False
         return True
 
     def __check_unique_shipped_item(self, shippeditem):
